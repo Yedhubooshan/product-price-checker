@@ -1,3 +1,4 @@
+#Hello, Thanks for viewing my first project!Hope its good!! Cheers - Yedhubooshan M M
 import requests,smtplib,time,stdiomask
 from bs4 import BeautifulSoup
 from colorama import init,Fore,Style
