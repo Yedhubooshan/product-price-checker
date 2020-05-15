@@ -17,6 +17,7 @@ Requirements:
       ->colorama : For colors (just for fun)
       ->smtplib : To establish connection and login e-mail
       ->time : To create delay
+  3. Check and change for your UserAgent (just google and paste in the code)
  Inputs to be given by the user:
   1. Name of the website (Helps in getting the data from website)
   2. URL of the website
