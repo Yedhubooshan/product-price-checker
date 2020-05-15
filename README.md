@@ -9,7 +9,9 @@ This program was written with reference from:
 Requirements:
   1. Python 3  https://www.python.org
   2. Packages: Copy paste the below line to install the packages in one go using cmd (Inside the python app directory)
+  
     pip install requests stdiomask bs4 colorama
+    
     Packages used:
       ->requests : Allows you to send HTTP requests
       ->stdiomask : To mask the password
