@@ -33,6 +33,7 @@ Note for Password:(For better Protection)
   ->Goto google app passwords
   ->Get 16 digit Password Code
   ->Enter in the input Password
+  
 If Lazy: (Less Protection)
 	=>Enable Google Less Secure Apps
 	=>Enter Your Default Password
