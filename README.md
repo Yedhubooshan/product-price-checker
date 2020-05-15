@@ -12,7 +12,7 @@ Requirements:
   
     pip install requests stdiomask bs4 colorama
     
-    Packages used:
+   Packages used:
       ->requests : Allows you to send HTTP requests
       ->stdiomask : To mask the password
       ->bs4 : To scrap from Website
