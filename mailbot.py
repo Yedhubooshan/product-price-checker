@@ -5,43 +5,37 @@ from colorama import init,Fore,Style
 init(autoreset=True) #resets color of the text after every line
 
 #getting inputs from user:
-
 print(Fore.YELLOW + Style.BRIGHT + 'Welcome To Amazon/Flipkart India Price Checker!')
 
-website_name= input('amazon/flipkart: ')
-if website_name.lower() == 'flipkart':
-	print("Flipkart is loading")
-elif website_name.lower() == 'amazon':
-	print('Amazon is loading')
+URL = input('Enter URL: ')
+headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'}
+page =  requests.get(URL, headers=headers) #Allows you to send HTTP requests
+soup = BeautifulSoup(page.content, 'html.parser') #Getting websites's content
+
+if 'flipkart' in URL.lower():
+	website_name='Flipkart'
+	title = soup.find('span', attrs={'class':'_35KyD6'}).get_text() #Getting product title
+	price = soup.find('div', attrs={'class':'_1vC4OE _3qQ9m1'}).get_text() #Getting product price
+	cprice=price[1:9] #getting string of the price!
+	print('\n'+Fore.CYAN+title.strip(),'Rs.'+cprice+'\n')
+elif 'amazon' in URL.lower():	
+	website_name='Amazon'
+	title = soup.find(id='productTitle').get_text() #Getting product title
+	price = soup.find(id='priceblock_ourprice').get_text() #Getting product price
+	cprice=price[2:10] 
+	print('\n'+Fore.CYAN+title.strip(),'Rs.'+cprice+'\n')
 else:
 	print("COME BACK AGAIN AND ENTER PROPERLY!\nBYE!!")
 	time.sleep(1.5)
 	exit()
-URL,login_id,password,dest_mail,min_value= input('Enter URL: '),input('Your E-mail id: '),stdiomask.getpass(),input('Dest_Email: '),int(input('Enter your affordable price: '))
+print(Fore.GREEN + Style.BRIGHT + f'Welcome to {website_name}\n'+f"{website_name} is loading")
+
+login_id,password,dest_mail,min_value= input('Your E-mail id: '),stdiomask.getpass(),input('Dest_Email: '),int(input('Enter your affordable price: '))
+
 print(Fore.GREEN + Style.BRIGHT +"\nThank you for the providing the required inputs\n"+Fore.CYAN+ Style.BRIGHT +"The indication will be sent to your destination mail when the price falls down\n"+Fore.MAGENTA+ Style.BRIGHT +"Happy Shopping!\n")
 print("Check Started !\n")
 
-headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'}
-page =  requests.get(URL, headers=headers) #Allows you to send HTTP requests
-soup = BeautifulSoup(page.content, 'html.parser') #Getting websites's content
-print(Fore.GREEN + Style.BRIGHT + f'Welcome to {website_name}\n')
-#getting the product name and price as string
-if website_name.lower() == 'flipkart':
-	title = soup.find('span', attrs={'class':'_35KyD6'}).get_text() #Getting product title
-	price = soup.find('div', attrs={'class':'_1vC4OE _3qQ9m1'}).get_text() #Getting product price
-	cprice=price[1:9] #getting string of the price!
-	print(title,cprice)
 
-elif website_name.lower() == 'amazon':
-	title = soup.find(id='productTitle').get_text() #Getting product title
-	price = soup.find(id='priceblock_ourprice').get_text() #Getting product price
-	cprice=price[2:10] 
-	print(title.strip(),'Rs.'+cprice+'\n')
-else:
-	print('Learn the name of website and come again!\nBYE!!')
-	time.sleep(2)
-	exit()
-	
 def check_price():
 
 	#Extracting Price Value from Text
@@ -82,7 +76,7 @@ def send_email():
 	server.login(login_id,password)
 	#Content of the mail
 	subject = 'Lookout out the price drop :-)'
-	body= f'Checkout the {website_name} link:\n' + URL
+	body= f'Hey Buddy,\nGuess what, the product you were thinking for buying got its price fall\n\nCurrent price: {cprice}\n\nCheckout the {website_name} link:\n\n' + URL + '\n\nHappy Shopping!!!'
 	msg = f'subject:{subject}\n\n{body}'
 
 	#Sending mail
@@ -102,4 +96,4 @@ while check_bit==0 :
 		time.sleep(2)
 		exit()
 	else:
-		time.sleep(60)
+		time.sleep(50)
