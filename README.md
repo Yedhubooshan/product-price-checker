@@ -20,13 +20,14 @@ Requirements:
       ->smtplib : To establish connection and login e-mail
       ->time : To create delay
   3. Check and change for your UserAgent (just google and paste in the code)
- Inputs to be given by the user:
-  1. Name of the website (Helps in getting the data from website)
-  2. URL of the website
-  3. User's mail address
-  4. User's Password
-  5. Destination mail address
-  6. Your Budget
+  
+  
+Inputs to be given by the user:
+ 1. URL of the website
+ 2. User's mail address
+ 3. User's Password
+ 4. Destination mail address
+ 5. Your Budget
   
 Note for Password:(For better Protection)
   ->Enable Two step Authentication
