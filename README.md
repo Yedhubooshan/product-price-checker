@@ -6,6 +6,8 @@ Note : This app runs for pricing from Rs.100 (hope it works for lakhs and crores
 This program was written with reference from:
   https://www.youtube.com/watch?v=Bg9r_yLk7VY
 
+Run code in terminal to see colorful output!!
+
 Requirements:
   1. Python 3  https://www.python.org
   2. Packages: Copy paste the below line to install the packages in one go using cmd (Inside the python app directory)
