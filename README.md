@@ -1,7 +1,7 @@
 # Amazon-flipkart-Rs-price-checker
 A program which checks for price fall below a range and automatically sends mail with link!(My First .py Project)
 
-Note : This app runs for pricing from Rs.100 (hope it works for lakhs and crores)
+Note : This app runs for pricing from Rs.100 (hope it works for lakhs)
 
 This program was written with reference from:
   https://www.youtube.com/watch?v=Bg9r_yLk7VY
